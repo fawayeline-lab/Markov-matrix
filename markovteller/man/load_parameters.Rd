@@ -4,10 +4,11 @@
 \alias{load_parameters}
 \title{Load the (fictitious) parameters of the project}
 \usage{
-load_parameters(path = system.file("extdata", "parameters.json", package = "markovteller"))
+load_parameters(path = NULL)
 }
 \arguments{
-\item{path}{Path to a JSON parameter file.}
+\item{path}{Path to a JSON parameter file. If \code{NULL} (the default), the file
+shipped with the package is used.}
 }
 \value{
 A list (K, s, tellers, periods, hand_example, simulation).

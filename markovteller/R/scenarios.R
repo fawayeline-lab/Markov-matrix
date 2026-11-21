@@ -3,14 +3,17 @@
 #' Reads a JSON file. By default, reads the file shipped with the package,
 #' whose values are **fictitious**.
 #'
-#' @param path Path to a JSON parameter file.
+#' @param path Path to a JSON parameter file. If `NULL` (the default), the file
+#'   shipped with the package is used.
 #' @return A list (K, s, tellers, periods, hand_example, simulation).
 #' @examples
 #' params <- load_parameters()
 #' params$K
 #' @export
-load_parameters <- function(path = system.file("extdata", "parameters.json",
-                                               package = "markovteller")) {
+load_parameters <- function(path = NULL) {
+  if (is.null(path)) {
+    path <- system.file("extdata", "parameters.json", package = "markovteller")
+  }
   if (!nzchar(path) || !file.exists(path)) stop("Parameter file not found.")
   jsonlite::fromJSON(path)
 }
